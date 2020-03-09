@@ -54,8 +54,19 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        # Check if there is an item or linked Pair already there
+        index = self._hash_mod(key)
+        if self.storage[index] is not None:
+            # We need to traverse the LinkedPair to check if the key already exists
 
+            curr = self.storage[index]
+            while curr is not None: 
+                # If so, check if the key is identical 
+                if key == curr.key:
+                    # If so, overwrite the values
+                    curr.value = value
+
+                curr = curr.next
 
 
     def remove(self, key):
